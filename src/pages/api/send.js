@@ -37,16 +37,18 @@ export default async (req, res) => {
 
         CONFIG.CHAT_IDS.forEach(async (id, index) => {
             setTimeout(() => {
-                bot.sendMessage(id, message)
-                bot.sendDocument(
-                    id,
-                    file.path,
-                    {},
-                    {
-                        filename: file.name,
-                        contentType: file.type
-                    }
-                )
+                bot.getChat(id).then(function (chat) {
+                    bot.sendMessage(chat.id, message)
+                    bot.sendDocument(
+                        chat.id,
+                        file.path,
+                        {},
+                        {
+                            filename: file.name,
+                            contentType: file.type
+                        }
+                    )
+                })
             }, 2500 * index)
         })
     })

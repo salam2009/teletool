@@ -44,14 +44,13 @@ export default function IndexPage() {
                         className='overflow-hidden border p-2 block w-full rounded'
                     />
                     <textarea
-                        type='text'
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         className='border h-32 p-2 block w-full rounded'
                         placeholder='Message'
                     />
                     <input
-                        type='text'
+                        type='password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className='border p-2 block w-full rounded'
