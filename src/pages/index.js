@@ -26,8 +26,7 @@ export default function IndexPage() {
                 setPasswrd('')
             })
             .catch((error) => {
-                alert('An error has occurred. Check the console for more information.')
-                console.log(error)
+                alert(error.response.data || 'An error has occurred. Check the console for more information.')
             })
     }
 

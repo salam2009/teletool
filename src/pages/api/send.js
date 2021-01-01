@@ -25,10 +25,15 @@ export default async (req, res) => {
         console.log(files)
         console.log(fields)
 
-        if (!files || !fields) res.status(400).send('Insufficient data sent.')
+        if (!files || !fields) res.status(400).send('Insufficient data sent to API.')
 
         const { message, password } = fields
         const { file } = files
+
+        if (password !== CONFIG.PASSWORD) {
+            res.status(400).send('The password you entered is incorrect.')
+            return
+        }
 
         CONFIG.CHAT_IDS.forEach(async (id, index) => {
             setTimeout(() => {
